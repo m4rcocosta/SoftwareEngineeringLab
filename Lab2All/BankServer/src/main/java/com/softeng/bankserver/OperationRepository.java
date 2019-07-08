@@ -11,43 +11,31 @@ import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
  * @author biar
  */
 
-@Path("Bank")
+@Path("/Bank")
 public class OperationRepository {
     
     private Map<Integer, Person> people = new HashMap<Integer, Person>();
     private List<Operation> operations = new ArrayList<Operation>();
     
     {
-        Operation op1 = new Operation();
-        Operation op2 = new Operation();
-        Operation op3 = new Operation();
-        Operation op4 = new Operation();
-        Operation op5 = new Operation();
+        Operation op1 = new Operation(0, "[2019-03-22,130,cena al ristorante]");
+        Operation op2 = new Operation(1, "[2019-03-19,30,benzina autostrada]");
+        Operation op3 = new Operation(2, "[2019-03-18,1400,riparazione motorino]");
+        Operation op4 = new Operation(3, "[2019-03-17,600,festa]");
+        Operation op5 = new Operation(4, "[2019-03-17,45,benzina autostrada]");
 
-        op1.setId(0);
-        op1.setDescription("[2019-03-22,130,cena al ristorante]");
+        
         operations.add(op1);
-
-        op2.setId(1);
-        op2.setDescription("[2019-03-19,30,benzina autostrada]");
         operations.add(op2);
-
-        op3.setId(2);
-        op3.setDescription("[2019-03-18,1400,riparazione motorino]");
         operations.add(op3);
-
-        op4.setId(3);
-        op4.setDescription("[2019-03-17,600,festa]");
         operations.add(op4);
-
-        op5.setId(4);
-        op5.setDescription("[2019-03-17,45,benzina autostrada]");
         operations.add(op5);
 
         List<Operation> operations1 = new ArrayList<Operation>();
@@ -99,17 +87,44 @@ public class OperationRepository {
     }
     
     @GET
-    @Path("people/{personId}")
+    @Path("/people/{personId}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML} )
     public List<Operation> getOperationsByUserId(@PathParam("personId") int personId){
         return getOperationsByPersonId(personId);
     }
     
     @GET
-    @Path("operation/{opId}")
+    @Path("/operations/{opId}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML} )
     public Operation getOpById(@PathParam("opId") int opId){
         return getOperationDetailsById(opId);
+    }
+    
+    @POST
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response updateOperation(Operation op){
+        //Operation oper = new Operation(op.getId(), op.getDescription());
+        System.out.println("Desc: " + op.getDescription());
+        addOperation(op);
+        return Response.status(Response.Status.CREATED).build();
+    }
+    
+    private Operation findById(int id) {
+        for (Operation op : operations) {
+            if (op.getId() == id) {
+                return op;
+            }
+        }
+        return null;
+    }
+    
+    private void addOperation(Operation operation) {
+        for(Operation op : operations) {
+            if(op.getId() == operation.getId()){
+                throw new OperationAlreadyExists();
+            }
+        }
+        operations.add(operation);
     }
     
 }

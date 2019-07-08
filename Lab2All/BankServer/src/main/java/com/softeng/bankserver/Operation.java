@@ -6,18 +6,30 @@
 package com.softeng.bankserver;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author biar
  */
 
-@XmlRootElement(name = "Operation")
+@XmlRootElement
 public class Operation {
     
     private int id;
     private String description;
+
+    public Operation(int id, String description) {
+        super();
+        this.id = id;
+        this.description = description;
+    }
+    
+    public Operation(){}
 
     public int getId() {
         return id;
