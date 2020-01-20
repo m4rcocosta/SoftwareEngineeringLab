@@ -145,3 +145,9 @@ Libreria Vector
 Utile, fa tutto
 usare vector<Tipo>
 presenta un iteratore a vector<Tipo>::iterator accessibile con .begin o .end
+
+
+
+########################################################
+
+######################################################
