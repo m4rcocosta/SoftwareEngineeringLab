@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/MovieInterface?wsdl" uri="wsdl/localhost_8080/MovieInterface.wsdl"/>
+    <system systemId="http://localhost:8080/MovieInterface?xsd=1" uri="wsdl/localhost_8080/MovieInterface.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MoviesWSInterface?wsdl" uri="wsdl/localhost_8080/MoviesWSInterface.wsdl"/>
+    <system systemId="http://localhost:8080/MoviesWSInterface?xsd=1" uri="wsdl/localhost_8080/MoviesWSInterface.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/MoviesInterface?wsdl" uri="wsdl/localhost_8080/MoviesInterface.wsdl"/>
+    <system systemId="http://localhost:8080/MoviesInterface?xsd=1" uri="wsdl/localhost_8080/MoviesInterface.xsd_1.xsd"/>
+</catalog>

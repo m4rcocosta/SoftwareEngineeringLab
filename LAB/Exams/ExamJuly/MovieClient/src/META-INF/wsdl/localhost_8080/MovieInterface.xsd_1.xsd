@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://moviews.july.softeng.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://moviews.july.softeng.com/">
+
+<xs:element name="getAllDirectors" type="tns:getAllDirectors"></xs:element>
+
+<xs:element name="getAllDirectorsResponse" type="tns:getAllDirectorsResponse"></xs:element>
+
+<xs:element name="getAllMovies" type="tns:getAllMovies"></xs:element>
+
+<xs:element name="getAllMoviesResponse" type="tns:getAllMoviesResponse"></xs:element>
+
+<xs:element name="getDirector" type="tns:getDirector"></xs:element>
+
+<xs:element name="getDirectorResponse" type="tns:getDirectorResponse"></xs:element>
+
+<xs:element name="getMovie" type="tns:getMovie"></xs:element>
+
+<xs:element name="getMovieResponse" type="tns:getMovieResponse"></xs:element>
+
+<xs:complexType name="getMovie">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMovieResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movie">
+<xs:sequence>
+<xs:element name="director" type="tns:director" minOccurs="0"></xs:element>
+<xs:element name="id" type="xs:int"></xs:element>
+<xs:element name="title" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="year" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="director">
+<xs:sequence>
+<xs:element name="id" type="xs:int"></xs:element>
+<xs:element name="name" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="yearOfBirth" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllMovies">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllMoviesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllDirectors">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllDirectorsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:director" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDirector">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDirectorResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:director" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
